@@ -60,7 +60,7 @@ def create_tables_and_indexes():
     print("Таблицы и индексы успешно созданы")
 
 def fill_test_data():
-    """Заполняет базу тестовыми данными"""
+    
     db = SessionLocal()
     
     try:
