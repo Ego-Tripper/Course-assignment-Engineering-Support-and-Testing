@@ -7,7 +7,7 @@ import random
 from models import Base, Photo, Video, Book, UserDocument, Character, Review
 from models import character_photo, character_video, character_book
 
-# Настройка подключения к базе данных
+# Configuring Database Connection
 SQLALCHEMY_DATABASE_URL = "sqlite:///./media_gallery.db"
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, 
@@ -18,7 +18,7 @@ engine = create_engine(
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def create_tables_and_indexes():
-    """Создает все таблицы и индексы в базе данных"""
+    
     # Create all tables
     Base.metadata.create_all(bind=engine)
     
@@ -60,7 +60,7 @@ def create_tables_and_indexes():
     print("Таблицы и индексы успешно созданы")
 
 def fill_test_data():
-    """Заполняет базу тестовыми данными"""
+    
     db = SessionLocal()
     
     try:
