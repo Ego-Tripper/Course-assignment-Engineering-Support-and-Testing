@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: media_gallery_app
+    volumes:
+      - ./uploads:/app/uploads
+      - ./media_gallery.db:/app/media_gallery.db
+    environment:
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    networks:
+      - media_network
+
+  nginx:
+    image: nginx:alpine
+    container_name: media_gallery_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./uploads:/app/uploads:ro
+    depends_on:
+      - app
+    restart: unless-stopped
+    networks:
+      - media_network
+
+networks:
+  media_network:
+    driver: bridge
+
+volumes:
+  uploads:
+  database:
