@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install --no-chache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY main.py .
 COPY models.py .
@@ -13,7 +13,7 @@ COPY init_db.py .
 COPY crud.py .
 COPY schemas.py .
 
-RUN mkidr -p uploads
+RUN mkdir -p uploads
 
 RUN chmod 755 uploads
 
